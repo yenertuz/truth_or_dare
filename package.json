@@ -1,0 +1,24 @@
+{
+  "name": "truth_or_dare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --mode=development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yenertuz/truth_or_dare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yenertuz/truth_or_dare/issues"
+  },
+  "homepage": "https://github.com/yenertuz/truth_or_dare#readme",
+  "devDependencies": {
+    "webpack-cli": "^3.3.0"
+  }
+}

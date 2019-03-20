@@ -1,31 +1,33 @@
 {
-  "name": "truth_or_dare",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yenertuz/truth_or_dare.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yenertuz/truth_or_dare/issues"
-  },
-  "homepage": "https://github.com/yenertuz/truth_or_dare#readme",
-  "dependencies": {
-    "@babel/core": "^7.4.0",
-    "@babel/preset-env": "^7.4.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "jquery": "^3.3.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
-  }
+    "name": "truth_or_dare",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "webpack": "webpack --mode=development --watch",
+        "build": "webpack --mode=development"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https:\/\/github.com\/yenertuz\/truth_or_dare.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https:\/\/github.com\/yenertuz\/truth_or_dare\/issues"
+    },
+    "homepage": "https:\/\/github.com\/yenertuz\/truth_or_dare#readme",
+    "dependencies": {
+        "@babel\/core": "^7.4.0",
+        "@babel\/preset-env": "^7.4.1",
+        "@babel\/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "jquery": "^3.3.1",
+        "react": "^16.8.4",
+        "react-dom": "^16.8.4",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    }
 }

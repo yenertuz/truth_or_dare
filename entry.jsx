@@ -8,7 +8,7 @@ import check_room_target from './frontend/functions/check_room_target';
 
 var state = {};
 state.target_room = check_room_target();
-window.state = state;
+window.state = state; // Delete this line after development
 
 class Root extends React.Component {
 	render() {

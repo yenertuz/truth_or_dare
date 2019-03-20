@@ -129,7 +129,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var state = {};
 state.target_room = Object(_frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_4__["default"])();
-window.state = state;
+window.state = state; // Delete this line after development
 
 var Root =
 /*#__PURE__*/
@@ -211,7 +211,15 @@ function (_React$Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Main");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "main-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "main"
+      }, "Truth or Dare"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "main create-room"
+      }, "Create Room"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "main join-room"
+      }, "Join Room"));
     }
   }]);
 
@@ -254,7 +262,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
+ // Check if room exists
+// Ask for the passcode
+// Either join successfully
+// Or retry
+// Or give the option to go to the main menu
 
 var RoomConnector =
 /*#__PURE__*/
@@ -300,7 +312,6 @@ function check_room_target() {
     var value = key_value_split[1];
     get_object[key] = value;
   });
-  window.get_object = get_object;
 
   if ("room" in get_object) {
     return get_object.room;

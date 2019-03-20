@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _frontend_components_room_connector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/components/room_connector */ "./frontend/components/room_connector.jsx");
 /* harmony import */ var _frontend_components_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/components/main */ "./frontend/components/main.jsx");
-/* harmony import */ var _frontend_components_game__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frontend/components/game */ "./frontend/components/game.jsx");
+/* harmony import */ var _frontend_components_game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/components/game */ "./frontend/components/game.jsx");
 /* harmony import */ var _frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/functions/check_room_target */ "./frontend/functions/check_room_target.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -146,6 +146,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props));
 
+    var create_user = function create_user() {
+      fetch("http://URL/create_user.php");
+    };
+
+    state.user = create_user();
+
     state.rerender = function () {
       _this.setState({});
     };
@@ -159,7 +165,7 @@ function (_React$Component) {
       if (state.target_room != "") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_room_connector__WEBPACK_IMPORTED_MODULE_2__["default"], null);
       } else if (state.room != "") {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_4__["default"], null);
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       }

@@ -15,6 +15,11 @@ window.state = state; // Delete this line after development
 class Root extends React.Component {
 	constructor(props) {
 		super(props);
+
+		let create_user = () => {
+			fetch("http://URL/create_user.php")
+		}
+		state.user = create_user();
 		state.rerender = () => {
 			this.setState({});
 		};

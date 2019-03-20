@@ -11,6 +11,13 @@ state.target_room = check_room_target();
 window.state = state; // Delete this line after development
 
 class Root extends React.Component {
+	constructor(props) {
+		super(props);
+		state.rerender = () => {
+			this.setState({});
+		};
+	}
+	
 	render() {
 		if (state.target_room != "") {
 			return (<RoomConnector />);

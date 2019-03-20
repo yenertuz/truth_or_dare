@@ -20,7 +20,7 @@ class MainCreate extends React.Component {
     render() {
         <div id="main-create-div" className="container">
         <span>Main Create</span>
-        <button onClick={() => {state.main_action = "";}}>Go back</button>
+        <button onClick={() => {state.action = "";}}>Go back</button>
         </div>
     }
 }
@@ -29,16 +29,16 @@ class MainJoin extends React.Component {
     render() {
         <div id="main-join-div" className="container">
         <span>Main Join</span>
-        <button onClick={() => {state.main_action = "";}}>Go back</button>
+        <button onClick={() => {state.action = "";}}>Go back</button>
         </div>
     }
 }
 
 class Main extends React.Component {
     render () {
-        if (state.main_action == "create") {
+        if (state.action == "create") {
             return (<MainCreate />);
-        } else if (state.main_action == "join") {
+        } else if (state.action == "join") {
             return (<MainJoin />);
         } else {
             return (<MainOptions />);

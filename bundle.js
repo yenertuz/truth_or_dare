@@ -136,10 +136,18 @@ var Root =
 function (_React$Component) {
   _inherits(Root, _React$Component);
 
-  function Root() {
+  function Root(props) {
+    var _this;
+
     _classCallCheck(this, Root);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Root).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props));
+
+    state.rerender = function () {
+      _this.setState({});
+    };
+
+    return _this;
   }
 
   _createClass(Root, [{
@@ -256,7 +264,7 @@ function (_React$Component2) {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Main Create"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          state.main_action = "";
+          state.action = "";
         }
       }, "Go back"));
     }
@@ -284,7 +292,7 @@ function (_React$Component3) {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Main Join"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          state.main_action = "";
+          state.action = "";
         }
       }, "Go back"));
     }
@@ -307,9 +315,9 @@ function (_React$Component4) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      if (state.main_action == "create") {
+      if (state.action == "create") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainCreate, null);
-      } else if (state.main_action == "join") {
+      } else if (state.action == "join") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainJoin, null);
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainOptions, null);

@@ -6,7 +6,7 @@ div.container { height: 80vh; }
 
 /* Main */
 
-#main-div {
+#main-options-div {
     display: flex;
     flex-direction: column;
     text-align: center;

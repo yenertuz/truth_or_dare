@@ -197,18 +197,18 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Main =
+var MainOptions =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Main, _React$Component);
+  _inherits(MainOptions, _React$Component);
 
-  function Main() {
-    _classCallCheck(this, Main);
+  function MainOptions() {
+    _classCallCheck(this, MainOptions);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Main).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainOptions).apply(this, arguments));
   }
 
-  _createClass(Main, [{
+  _createClass(MainOptions, [{
     key: "render",
     value: function render() {
       var create_room_onclick = function create_room_onclick() {
@@ -220,7 +220,7 @@ function (_React$Component) {
       };
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "main-div",
+        id: "main-options-div",
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "main"
@@ -231,6 +231,57 @@ function (_React$Component) {
         className: "main join-room clickable",
         onClick: join_room_onclick
       }, "Join Room"));
+    }
+  }]);
+
+  return MainOptions;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var MainCreate =
+/*#__PURE__*/
+function (_React$Component2) {
+  _inherits(MainCreate, _React$Component2);
+
+  function MainCreate() {
+    _classCallCheck(this, MainCreate);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainCreate).apply(this, arguments));
+  }
+
+  _createClass(MainCreate, [{
+    key: "render",
+    value: function render() {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "main-create-div",
+        className: "container"
+      });
+    }
+  }]);
+
+  return MainCreate;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var Main =
+/*#__PURE__*/
+function (_React$Component3) {
+  _inherits(Main, _React$Component3);
+
+  function Main() {
+    _classCallCheck(this, Main);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Main).apply(this, arguments));
+  }
+
+  _createClass(Main, [{
+    key: "render",
+    value: function render() {
+      if (state.main_action == "create") {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainCreate, null);
+      } else if (state.main_action == "join") {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainJoin, null);
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainOptions, null);
+      }
     }
   }]);
 

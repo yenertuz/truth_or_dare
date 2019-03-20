@@ -211,14 +211,25 @@ function (_React$Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
+      var create_room_onclick = function create_room_onclick() {
+        ;
+      };
+
+      var join_room_onclick = function join_room_onclick() {
+        ;
+      };
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "main-div"
+        id: "main-div",
+        className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "main"
       }, "Truth or Dare"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "main create-room"
+        className: "main create-room clickable",
+        onClick: create_room_onclick
       }, "Create Room"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "main join-room"
+        className: "main join-room clickable",
+        onClick: join_room_onclick
       }, "Join Room"));
     }
   }]);

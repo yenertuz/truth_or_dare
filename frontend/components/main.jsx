@@ -19,7 +19,17 @@ class MainOptions extends React.Component {
 class MainCreate extends React.Component {
     render() {
         <div id="main-create-div" className="container">
-        
+        <span>Main Create</span>
+        <button onClick={() => {state.main_action = "";}}>Go back</button>
+        </div>
+    }
+}
+
+class MainJoin extends React.Component {
+    render() {
+        <div id="main-join-div" className="container">
+        <span>Main Join</span>
+        <button onClick={() => {state.main_action = "";}}>Go back</button>
         </div>
     }
 }

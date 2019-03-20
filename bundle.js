@@ -254,17 +254,49 @@ function (_React$Component2) {
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "main-create-div",
         className: "container"
-      });
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Main Create"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          state.main_action = "";
+        }
+      }, "Go back"));
     }
   }]);
 
   return MainCreate;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var Main =
+var MainJoin =
 /*#__PURE__*/
 function (_React$Component3) {
-  _inherits(Main, _React$Component3);
+  _inherits(MainJoin, _React$Component3);
+
+  function MainJoin() {
+    _classCallCheck(this, MainJoin);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MainJoin).apply(this, arguments));
+  }
+
+  _createClass(MainJoin, [{
+    key: "render",
+    value: function render() {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "main-join-div",
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Main Join"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          state.main_action = "";
+        }
+      }, "Go back"));
+    }
+  }]);
+
+  return MainJoin;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var Main =
+/*#__PURE__*/
+function (_React$Component4) {
+  _inherits(Main, _React$Component4);
 
   function Main() {
     _classCallCheck(this, Main);

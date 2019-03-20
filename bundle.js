@@ -101,7 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _frontend_components_room_connector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/components/room_connector */ "./frontend/components/room_connector.jsx");
 /* harmony import */ var _frontend_components_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/components/main */ "./frontend/components/main.jsx");
-/* harmony import */ var _frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/functions/check_room_target */ "./frontend/functions/check_room_target.jsx");
+/* harmony import */ var _frontend_components_game__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frontend/components/game */ "./frontend/components/game.jsx");
+/* harmony import */ var _frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/functions/check_room_target */ "./frontend/functions/check_room_target.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -124,11 +125,13 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
  // import $ from 'jquery';
 // import environment from "./environment";
 
 var state = {};
-state.target_room = Object(_frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_4__["default"])();
+state.target_room = Object(_frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_5__["default"])();
+state.room = "";
 window.state = state; // Delete this line after development
 
 var Root =
@@ -155,6 +158,8 @@ function (_React$Component) {
     value: function render() {
       if (state.target_room != "") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_room_connector__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+      } else if (state.room != "") {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_6__["default"], null);
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       }
@@ -168,6 +173,62 @@ document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Root, null), root);
 });
+
+/***/ }),
+
+/***/ "./frontend/components/game.jsx":
+/*!**************************************!*\
+  !*** ./frontend/components/game.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Game =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Game, _React$Component);
+
+  function Game() {
+    _classCallCheck(this, Game);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Game).apply(this, arguments));
+  }
+
+  _createClass(Game, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Game");
+    }
+  }]);
+
+  return Game;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Game);
 
 /***/ }),
 
@@ -220,11 +281,13 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var create_room_onclick = function create_room_onclick() {
-        ;
+        state.action = "create";
+        state.rerender();
       };
 
       var join_room_onclick = function join_room_onclick() {
-        ;
+        state.action = "join";
+        state.rerender();
       };
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -259,13 +322,16 @@ function (_React$Component2) {
   _createClass(MainCreate, [{
     key: "render",
     value: function render() {
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var go_back = function go_back() {
+        state.action = "";
+        state.rerender();
+      };
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "main-create-div",
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Main Create"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          state.action = "";
-        }
+        onClick: go_back
       }, "Go back"));
     }
   }]);
@@ -287,13 +353,16 @@ function (_React$Component3) {
   _createClass(MainJoin, [{
     key: "render",
     value: function render() {
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var go_back = function go_back() {
+        state.action = "";
+        state.rerender();
+      };
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "main-join-div",
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Main Join"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          state.action = "";
-        }
+        onClick: go_back
       }, "Go back"));
     }
   }]);

@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom';
 
 class MainOptions extends React.Component {
     render () {
-        let create_room_onclick = () => {  ; };
-        let join_room_onclick = () => {   ; };
+        let create_room_onclick = () => {  
+            state.action = "create";
+            state.rerender();
+        };
+        let join_room_onclick = () => {
+            state.action = "join";
+            state.rerender();
+        };
 
         return (
             <div id="main-options-div" className="container">
@@ -18,19 +24,34 @@ class MainOptions extends React.Component {
 
 class MainCreate extends React.Component {
     render() {
-        <div id="main-create-div" className="container">
-        <span>Main Create</span>
-        <button onClick={() => {state.action = "";}}>Go back</button>
-        </div>
+        let go_back = () => {
+            state.action = "";
+            state.rerender();
+        }
+
+        return (
+
+            <div id="main-create-div" className="container">
+            <span>Main Create</span>
+            <button onClick={go_back}>Go back</button>
+            </div>
+        );
     }
 }
 
 class MainJoin extends React.Component {
     render() {
-        <div id="main-join-div" className="container">
-        <span>Main Join</span>
-        <button onClick={() => {state.action = "";}}>Go back</button>
-        </div>
+        let go_back = () => {
+            state.action = "";
+            state.rerender();
+        }
+
+        return (
+            <div id="main-join-div" className="container">
+            <span>Main Join</span>
+            <button onClick={go_back}>Go back</button>
+            </div>
+        );
     }
 }
 

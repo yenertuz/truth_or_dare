@@ -3,17 +3,58 @@
 body { font-family: sans-serif; }
 div.container { height: 80vh; }
 .clickable { cursor: pointer; }
+footer { margin-top: 20px; }
+footer img { margin-bottom: 15px; }
 
 /* Main */
 
+/*    Main Options */
 #main-options-div {
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: flex-start;
+	justify-content: flex-start;
 }
 
-span.main { margin-top: 10px; }
-button.main { height: 80px; margin-top: 30px;}
+span.main { margin-top: 10%; font-size: 25px; }
+button.main { height: 80px; margin-top: 10%; font-size: 20px; background-color: orange;}
+button.main:hover, button.main:active { background-color: black; color: orange; }
+
+/*    Main Create */
+#main-create-div {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: flex-start;
+}
+#main-create-div input { text-align: center; margin-bottom: 10%; border: 1px black solid;}
+#main-create-div span.error { color: crimson; font-weight: bold; }
+#main-create-div button { cursor: pointer; height: 80px; background-color: orange; 
+	font-size: 20px; margin-top: 2%;}
+#main-create-div button:hover, #main-create-div button:active { background-color: black; 
+	color: orange; }
+#main-create-div button.error { background-color: gray; color: black; cursor: default; }
+#main-create-span { margin-top: 10%; }
+#main-create-input { margin-top: 5%; height: 30px; font-size: 15px; }
+#main-create-error-span { margin-top: 5%; }
+
+/*    Main Join */ 
+#main-join-div {
+	display: flex;
+	flex-direction: column;
+	text-align: center; 
+	justify-content: flex-start;
+}
+#main-join-button { cursor: pointer; height: 80px; background-color: orange; font-size: 20px;
+margin-top: 2% }
+#main-join-button:hover, #main-join-button:active { color: orange; background-color: black; }
+#main-join-span { margin-top: 10%; }
+#main-join-input { margin-top: 10%; text-align: center; border: 1px solid black; 
+	height: 30px; font-size: 15px; }
+#main-join-button-2 { cursor: pointer; height: 80px; background-color: orange; font-size: 20px;
+	margin-top: 10% }
+#main-join-button-2:hover, #main-join-button-2:active { color: orange; background-color: black; }
+#main-join-button-2.error { color:black; background-color: gray; cursor: default;   }
+#main-join-div span.error { color: crimson; font-weight: bold; }
 
 /* Room Connector */

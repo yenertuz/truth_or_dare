@@ -11,15 +11,17 @@ var state = {};
 state.target_room = check_room_target();
 state.room = "";
 window.state = state; // Delete this line after development
+if (location.hostname != "localhost")
+  location.assign("http://localhost:8080?room=test"); // Just for when working on Main Create
 
 class Root extends React.Component {
 	constructor(props) {
 		super(props);
 
-		let create_user = () => {
-			fetch("http://URL/create_user.php")
-		}
-		state.user = create_user();
+		// let create_user = () => {
+		// 	fetch("http://URL/create_user.php")
+		// };
+		// state.user = create_user();
 		state.rerender = () => {
 			this.setState({});
 		};
@@ -27,7 +29,8 @@ class Root extends React.Component {
 	
 	render() {
 		if (state.target_room != "") {
-			return (<RoomConnector />);
+			state.action = "join";
+			return (<Main />);
 		} 
 		else if (state.room != "") {
 			return (<Game />);

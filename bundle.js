@@ -134,6 +134,8 @@ state.target_room = Object(_frontend_functions_check_room_target__WEBPACK_IMPORT
 state.room = "";
 window.state = state; // Delete this line after development
 
+if (location.hostname != "localhost") location.assign("http://localhost:8080?room=test"); // Just for when working on Main Create
+
 var Root =
 /*#__PURE__*/
 function (_React$Component) {
@@ -144,13 +146,10 @@ function (_React$Component) {
 
     _classCallCheck(this, Root);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props));
-
-    var create_user = function create_user() {
-      fetch("http://URL/create_user.php");
-    };
-
-    state.user = create_user();
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props)); // let create_user = () => {
+    // 	fetch("http://URL/create_user.php")
+    // };
+    // state.user = create_user();
 
     state.rerender = function () {
       _this.setState({});
@@ -163,7 +162,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (state.target_room != "") {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_room_connector__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+        state.action = "join";
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       } else if (state.room != "") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_4__["default"], null);
       } else {
@@ -279,7 +279,7 @@ var is_room_name_okay = function is_room_name_okay(room_name) {
   var allowed = "abcdefghijklmnopqrstuvwxyz0123456789";
   var return_value = "";
 
-  if (room_name.length > 20) {
+  if (room_name.length > 20 || room_name.length == 0) {
     return "error";
   }
 
@@ -347,8 +347,12 @@ function (_React$Component2) {
   _createClass(MainCreate, [{
     key: "render",
     value: function render() {
-      if (state.span_class == undefined) {
-        state.span_class = "";
+      if (state.room_name_class == undefined) {
+        state.room_name_class = "";
+      }
+
+      if (state.name_class == undefined) {
+        state.name_class = "";
       }
 
       var room_name_taken = "";
@@ -362,9 +366,12 @@ function (_React$Component2) {
         room_name_taken = "";
       }
 
+      var span_class = "";
       var create_button_onclick = "";
 
-      if (state.span_class != "error") {
+      if (state.room_name_class == "error" || state.name_class == "error" || state.user_name == "" || state.user_name == undefined || state.room_name == "" || state.room_name == undefined) {
+        span_class = "error";
+      } else {
         create_button_onclick = function create_button_onclick() {
           alert("CREATING");
         };
@@ -372,14 +379,20 @@ function (_React$Component2) {
 
       var go_back = function go_back() {
         state.action = "";
+        delete state.span_class;
+        delete state.room_name;
+        delete state.user_name;
+        delete state.name_class;
+        delete state.room_name_class;
         state.rerender();
       };
 
-      var room_name_onchange = function room_name_onchange(e) {
+      var room_name_onchange = function room_name_onchange(e, key) {
         e.preventDefault();
         var room_name = e.target.value.toLowerCase();
         e.target.value = room_name;
-        state.span_class = is_room_name_okay(room_name);
+        state[key] = is_room_name_okay(room_name);
+        key == "name_class" ? state.user_name = room_name : state.room_name = room_name;
         state.rerender();
       };
 
@@ -393,17 +406,28 @@ function (_React$Component2) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "main-create-span"
       }, "Enter a room name. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: state.span_class
+        className: state.room_name_class
       }, "Alphanumeric characters only, 20 character max"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Case insensitive. Max 20 people per room"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Example: cool42",
         id: "main-create-input",
         onChange: function onChange(e) {
-          room_name_onchange(e);
+          room_name_onchange(e, "room_name_class");
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "main-create-name-span"
+      }, "Enter a nick name.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: state.name_class
+      }, " Alphanumeric characters only, 20 character max."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Case insensitive. Max 20 people per room"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Example: coolperson12",
+        id: "main-create-name-input",
+        onChange: function onChange(e) {
+          room_name_onchange(e, "name_class");
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "main-create-button",
-        className: state.span_class,
+        className: span_class,
         onClick: create_button_onclick
       }, "Create Room"), room_name_taken);
     }
@@ -428,6 +452,12 @@ function (_React$Component3) {
     value: function render() {
       var go_back = function go_back() {
         state.action = "";
+        state.target_room = "";
+        delete state.span_class;
+        delete state.room_name;
+        delete state.user_name;
+        delete state.name_class;
+        delete state.room_name_class;
         state.rerender();
       };
 
@@ -435,9 +465,19 @@ function (_React$Component3) {
         state.span_class = "";
       }
 
+      if (state.name_class == undefined) {
+        state.name_class = "";
+      }
+
+      var button_class = "";
+
+      if (state.span_class == "error" || state.name_class == "error" || state.user_name == undefined || state.user_name == "" || state.target_room == undefined || state.target_room == "") {
+        button_class = "error";
+      }
+
       var join_button_onclick = "";
 
-      if (state.span_class != "error") {
+      if (state.span_class != "error" && state.name_class != "error") {
         join_button_onclick = function join_button_onclick() {
           state.target_room = state.temp;
           state.temp = "";
@@ -447,11 +487,21 @@ function (_React$Component3) {
         join_button_onclick = function join_button_onclick() {};
       }
 
-      var room_name_onchange = function room_name_onchange(e) {
+      var room_name_onchange = function room_name_onchange(e, key) {
         e.preventDefault();
-        state.temp = e.target.value.toLowerCase();
-        e.target.value = state.temp;
-        state.span_class = is_room_name_okay(state.temp);
+        var tmp = "";
+        tmp = e.target.value.toLowerCase();
+        e.target.value = tmp;
+        state[key] = is_room_name_okay(tmp);
+
+        if (key == "span_class") {
+          state.target_room = tmp;
+        }
+
+        if (key == "name_class") {
+          state.user_name = tmp;
+        }
+
         state.rerender();
       };
 
@@ -467,14 +517,26 @@ function (_React$Component3) {
         id: "main-join-span"
       }, "Enter a room name to join. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: state.span_class
-      }, "Room names are alphanumeric, lowercase, max 20 characters.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Room names are alphanumeric, lowercase, max 20 characters, can't be blank.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "main-join-input",
         placeholder: "Example: fun42",
         onChange: function onChange(e) {
-          room_name_onchange(e);
+          room_name_onchange(e, "span_class");
+        },
+        value: state.target_room
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "main-join-name-span"
+      }, "Enter a nick name.", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: state.name_class
+      }, " Alphanumeric characters only, 20 character max, can't be blank."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Case insensitive. Max 20 people per room"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Example: coolperson12",
+        id: "main-join-name-input",
+        onChange: function onChange(e) {
+          room_name_onchange(e, "name_class");
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: state.span_class,
+        className: button_class,
         id: "main-join-button-2",
         onClick: join_button_onclick
       }, "Join"));

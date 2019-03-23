@@ -27,7 +27,7 @@ button.main:hover, button.main:active { background-color: black; color: orange; 
 	text-align: center;
 	justify-content: flex-start;
 }
-#main-create-div input { text-align: center; margin-bottom: 10%; border: 1px black solid;}
+#main-create-div input { text-align: center;  border: 1px black solid;}
 #main-create-div span.error { color: crimson; font-weight: bold; }
 #main-create-div button { cursor: pointer; height: 80px; background-color: orange; 
 	font-size: 20px; margin-top: 2%;}
@@ -35,7 +35,9 @@ button.main:hover, button.main:active { background-color: black; color: orange; 
 	color: orange; }
 #main-create-div button.error { background-color: gray; color: black; cursor: default; }
 #main-create-span { margin-top: 10%; }
-#main-create-input { margin-top: 5%; height: 30px; font-size: 15px; }
+#main-create-name-span { margin-top: 5% }
+#main-create-input, #main-create-name-input { margin-top: 5%; height: 30px; font-size: 15px; }
+#main-create-name-input { margin-bottom: 5%; }
 #main-create-error-span { margin-top: 5%; }
 
 /*    Main Join */ 
@@ -49,7 +51,8 @@ button.main:hover, button.main:active { background-color: black; color: orange; 
 margin-top: 2% }
 #main-join-button:hover, #main-join-button:active { color: orange; background-color: black; }
 #main-join-span { margin-top: 10%; }
-#main-join-input { margin-top: 10%; text-align: center; border: 1px solid black; 
+#main-join-name-span {margin-top: 5%}
+#main-join-input, #main-join-name-input { margin-top: 5%; text-align: center; border: 1px solid black; 
 	height: 30px; font-size: 15px; }
 #main-join-button-2 { cursor: pointer; height: 80px; background-color: orange; font-size: 20px;
 	margin-top: 10% }

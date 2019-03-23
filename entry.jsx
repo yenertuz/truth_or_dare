@@ -14,8 +14,6 @@ var state = {};
 state.target_room = check_room_target();
 state.room = "";
 window.state = state; // Delete this line after development
-if (location.hostname != "localhost")
-  location.assign("http://localhost:8080?room=test"); // Just for when working on Main Create
 
 class Root extends React.Component {
 	constructor(props) {
@@ -45,3 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const root = document.getElementById("root");
 	ReactDOM.render(<Root/>, root);
   });
+
+window.onbeforeunload = function(e) {
+	fetch("http://35.247.5.111/users/create.php");
+};

@@ -133,9 +133,7 @@ class MainJoin extends React.Component {
 		let join_button_onclick = "";
 		if (state.span_class != "error" && state.name_class != "error") {
 			join_button_onclick = () => {
-				state.target_room = state.temp;
-				state.temp = "";
-				state.rerender();
+				alert("JOINING");
 			};
 		} else {
 			join_button_onclick = () => {};

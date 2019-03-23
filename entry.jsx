@@ -4,6 +4,9 @@ import RoomConnector from './frontend/components/room_connector';
 import Main from './frontend/components/main';
 import Game from "./frontend/components/game";
 import check_room_target from './frontend/functions/check_room_target';
+import create_user from "./frontend/functions/create_user";
+import delete_user from "./frontend/functions/delete_user";
+
 // import $ from 'jquery';
 // import environment from "./environment";
 
@@ -18,10 +21,7 @@ class Root extends React.Component {
 	constructor(props) {
 		super(props);
 
-		// let create_user = () => {
-		// 	fetch("http://URL/create_user.php")
-		// };
-		// state.user = create_user();
+		create_user();
 		state.rerender = () => {
 			this.setState({});
 		};

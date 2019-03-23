@@ -103,6 +103,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _frontend_components_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/components/main */ "./frontend/components/main.jsx");
 /* harmony import */ var _frontend_components_game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/components/game */ "./frontend/components/game.jsx");
 /* harmony import */ var _frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/functions/check_room_target */ "./frontend/functions/check_room_target.jsx");
+/* harmony import */ var _frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frontend/functions/create_user */ "./frontend/functions/create_user.jsx");
+/* harmony import */ var _frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _frontend_functions_delete_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./frontend/functions/delete_user */ "./frontend/functions/delete_user.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -120,6 +123,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -146,10 +151,8 @@ function (_React$Component) {
 
     _classCallCheck(this, Root);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props)); // let create_user = () => {
-    // 	fetch("http://URL/create_user.php")
-    // };
-    // state.user = create_user();
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props));
+    _frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_6___default()();
 
     state.rerender = function () {
       _this.setState({});
@@ -479,9 +482,7 @@ function (_React$Component3) {
 
       if (state.span_class != "error" && state.name_class != "error") {
         join_button_onclick = function join_button_onclick() {
-          state.target_room = state.temp;
-          state.temp = "";
-          state.rerender();
+          alert("JOINING");
         };
       } else {
         join_button_onclick = function join_button_onclick() {};
@@ -668,6 +669,34 @@ function check_room_target() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (check_room_target);
+
+/***/ }),
+
+/***/ "./frontend/functions/create_user.jsx":
+/*!********************************************!*\
+  !*** ./frontend/functions/create_user.jsx ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/yenertuz/Desktop/truth_or_dare/frontend/functions/create_user.jsx: Unexpected token, expected \",\" (5:3)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m\t\t(response) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m\t\t\t\u001b[36mreturn\u001b[39m (response\u001b[33m.\u001b[39mtext())\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m\t\t}\u001b[33m.\u001b[39mthen(\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m\t\t \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m\t\t\t(text) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m\t\t\t\tstate\u001b[33m.\u001b[39muser \u001b[33m=\u001b[39m text\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 8 | \u001b[39m\t\t\t\tconsole\u001b[33m.\u001b[39mlog(state\u001b[33m.\u001b[39muser)\u001b[33m;\u001b[39m\u001b[0m\n    at Object.raise (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:3849:17)\n    at Object.unexpected (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5163:16)\n    at Object.expect (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5149:28)\n    at Object.parseCallExpressionArguments (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6106:14)\n    at Object.parseSubscript (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6016:29)\n    at Object.parseSubscripts (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5935:19)\n    at Object.parseExprSubscripts (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5924:17)\n    at Object.parseMaybeUnary (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5894:21)\n    at Object.parseExprOps (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5781:23)\n    at Object.parseMaybeConditional (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5754:23)\n    at Object.parseMaybeAssign (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5701:21)\n    at Object.parseExpression (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5649:23)\n    at Object.parseStatementContent (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7420:23)\n    at Object.parseStatement (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7291:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7877:25)\n    at Object.parseBlockBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7864:10)\n    at Object.parseBlock (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7848:10)\n    at Object.parseFunctionBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6909:24)\n    at Object.parseFunctionBodyAndFinish (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6879:10)\n    at withTopicForbiddingContext (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:8012:12)\n    at Object.withTopicForbiddingContext (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7185:14)\n    at Object.parseFunction (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:8011:10)\n    at Object.parseFunctionStatement (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7648:17)\n    at Object.parseStatementContent (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7329:21)\n    at Object.parseStatement (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7291:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7877:25)\n    at Object.parseBlockBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7864:10)\n    at Object.parseTopLevel (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7220:10)\n    at Object.parse (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:8869:17)\n    at parse (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:11131:38)");
+
+/***/ }),
+
+/***/ "./frontend/functions/delete_user.jsx":
+/*!********************************************!*\
+  !*** ./frontend/functions/delete_user.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function delete_user() {
+  ;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (delete_user);
 
 /***/ }),
 

@@ -6,6 +6,7 @@ import Game from "./frontend/components/game";
 import check_room_target from './frontend/functions/check_room_target';
 import create_user from "./frontend/functions/create_user";
 import delete_user from "./frontend/functions/delete_user";
+import { userInfo } from 'os';
 
 // import $ from 'jquery';
 // import environment from "./environment";
@@ -45,5 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 window.onbeforeunload = function(e) {
-	fetch("http://35.247.5.111/users/create.php");
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "http://35.247.5.111/users/delete.php", false);
+	let post_string = "id=" + state.user;
+	xhttp.send(post_string);
 };

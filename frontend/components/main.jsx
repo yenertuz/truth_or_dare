@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { stringify } from 'querystring';
+import $ from "jquery";
 
 var is_room_name_okay = (room_name) => {
 	let allowed = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -66,7 +67,27 @@ class MainCreate extends React.Component {
 				span_class = "error";
 		} else {
 			create_button_onclick = () => {
-				alert("CREATING");
+				$.post({
+					url: state.url + "/rooms/create.php",
+					dataType: "json",
+					data: {
+						creator_id: state.user,
+						name: state.room_name, 
+						nickname: state.user_name,
+					},
+					success: (data) => {
+						console.log("HERE2");
+						console.log("data");
+						state.room = data;
+						state.target_room = "";
+						state.rerender();
+					}
+				}, (data, status) => {
+					console.log("RETURNED");
+					console.log(data);
+					console.log(status);
+				}
+				);
 			}
 		}
 

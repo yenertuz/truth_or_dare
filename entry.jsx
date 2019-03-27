@@ -5,7 +5,7 @@ import Main from './frontend/components/main';
 import Game from "./frontend/components/game";
 import check_room_target from './frontend/functions/check_room_target';
 import create_user from "./frontend/functions/create_user";
-import delete_user from "./frontend/functions/delete_user";
+import $ from "jquery";
 import { userInfo } from 'os';
 
 // import $ from 'jquery';
@@ -14,6 +14,7 @@ import { userInfo } from 'os';
 var state = {};
 state.target_room = check_room_target();
 state.room = "";
+state.url = "http://35.247.5.111";
 window.state = state; // Delete this line after development
 
 class Root extends React.Component {
@@ -45,9 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	ReactDOM.render(<Root/>, root);
   });
 
-window.onbeforeunload = function(e) {
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("POST", "http://35.247.5.111/users/delete.php", false);
-	let post_string = "id=" + state.user;
-	xhttp.send(post_string);
-};
+$(window).on("unload",
+  () => {
+	  $.post({
+		  url: state.url + "/users/delete.php",
+		  data: {id: state.user},
+		  dataType: "json",
+		  async: false
+	  });
+  }
+);

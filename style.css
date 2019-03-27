@@ -60,4 +60,15 @@ margin-top: 2% }
 #main-join-button-2.error { color:black; background-color: gray; cursor: default;   }
 #main-join-div span.error { color: crimson; font-weight: bold; }
 
-/* Room Connector */
+/* Game */
+
+  /* Spinning Bottle */
+
+  #img-spinning-bottle { display: block; margin: auto; width: 100%;  }
+  #spinning-span { font-size: 30px; text-align:center; padding-top: 70px; display: block; }
+  #spinning-div { display:flex; flex-direction: column; justify-content: center; }
+
+  /* Not Spinning */
+
+  .truth-or-dare-button { border: 1px solid black;  }
+  #truth-or-dare-buttons-span {  display: flex; flex-direction: column; justify-content: space-around;       }

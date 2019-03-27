@@ -14,8 +14,17 @@ import { userInfo } from 'os';
 var state = {};
 state.target_room = check_room_target();
 state.room = "";
-state.url = "https://server.yenertuz.com";
+state.url = "http://localhost:9090";
 window.state = state; // Delete this line after development
+window.test = () => {
+  state.room = "test";
+  state.room_description = "Yener is asking Aniqa.";
+  state.asker_user_name = "Yener";
+  state.replier_user_name = "Aniqa";
+  state.user_name = "Yener";
+  state.room_status = "waiting_for_spin";
+  state.rerender();
+};
 
 class Root extends React.Component {
 	constructor(props) {
@@ -24,7 +33,7 @@ class Root extends React.Component {
 		create_user();
 		state.rerender = () => {
 			this.setState({});
-		};
+    };
 	}
 	
 	render() {
@@ -56,3 +65,5 @@ $(window).on("unload",
 	  });
   }
 );
+
+window.test(); // =============================>>>>>  DELETE ME AFTER TESTING

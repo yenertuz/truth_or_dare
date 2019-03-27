@@ -51,7 +51,7 @@ class MainCreate extends React.Component {
 		}
 
 		let span_class = "";
-		let create_button_onclick = "";
+		let create_button_onclick = () => { console.log("FAKE NEWS") };
 		if (state.room_name_class == "error" || 
 			state.name_class == "error" || 
 			state.user_name == "" || state.user_name == undefined 
@@ -64,21 +64,21 @@ class MainCreate extends React.Component {
 					url: state.url + "/rooms/create.php",
 					dataType: "json",
 					data: {
-						creator_id: state.user,
-						name: state.room_name, 
-						nickname: state.user_name,
+            id: state.user, 
+            room_name: state.room_name,
+            user_name: state.user_name
 					},
 					success: (data) => {
-						if (data == "Room name taken. Please choose another room name.") {
-							state.last_error = state.data;
+						if (data.error == "Room name taken") {
+							state.last_error = "Room name taken. Please choose another room name."
 						} else {
-							state.room = data;
+							state.room = data; delete state.room_name_class; delete state.name_class; delete state.target_room;
 						}
+						console.log(data);
 						state.target_room = "";
 						state.rerender();
 					}
-				}
-				);
+				});
 			}
 		}
 
@@ -112,7 +112,7 @@ class MainCreate extends React.Component {
 			onChange={(e) => {room_name_onchange(e, "name_class");}}/>
 			<button id="main-create-button" className={span_class} onClick={create_button_onclick}>Create Room</button>
             <span className="error" id="main-create-error-span">
-			{state.last_error}</span>;
+			{state.last_error}</span>
 			</div>
         );
     }
@@ -123,32 +123,54 @@ class MainJoin extends React.Component {
         let go_back = () => {
 			state.action = "";
 			state.target_room = "";
-			delete state.span_class; delete state.room_name; delete state.user_name;
+			delete state.room_name_class; delete state.room_name; delete state.user_name;
 			delete state.name_class;
-			delete state.room_name_class;
 			state.rerender();
 		}
 
-		if (state.span_class == undefined) {
-			state.span_class = "";
+		if (state.room_name_class == undefined) {
+			state.room_name_class = "";
 		}
 		if (state.name_class == undefined) {
 			state.name_class = "";
 		}
 
 		let button_class = "";
-		if (state.span_class == "error" || state.name_class == "error"
+		if (state.room_name_class == "error" || state.name_class == "error"
 			 || state.user_name == undefined || state.user_name == "" 
 			 || state.target_room == undefined || state.target_room == ""
 			 ) {
 			button_class = "error";
 		}
 		let join_button_onclick = "";
-		if (state.span_class != "error" && state.name_class != "error") {
+		if (button_class != "error") {
 			join_button_onclick = () => {
-				alert("JOINING");
-			};
-		} else {
+				$.post({
+					url: state.url + "/users/join.php",
+					dataType: "json",
+					data: {
+            id: state.user, 
+            room_name: state.target_room,
+            user_name: state.user_name
+					},
+					success: (data) => {
+            console.log(data);
+						if (data.error == "room_full") {
+              state.last_error = "The requested room is full";    
+            } else if (data.error == "no_room") {
+              state.last_error = "The room with the given name does not exist";
+            } else if (data.error == "user_name_taken") {
+              state.last_error = "Nickname taken. Please choose another nickname";
+            } else if (data.error != "incorrect_post") {
+              state.room = data; state.target_room = "";
+            }
+            state.rerender();
+          },
+          error: (error) => {
+            console.log(error);
+          }
+				});
+			}; } else {
 			join_button_onclick = () => {};
 		}
 
@@ -159,8 +181,8 @@ class MainJoin extends React.Component {
 			tmp = e.target.value.toLowerCase();
 			e.target.value = tmp;
 			state[key] = is_room_name_okay(tmp);
-			if (key == "span_class") { state.target_room = tmp; }
-			if (key == "name_class") { state.user_name = tmp; }
+			if (key == "room_name_class") { state.target_room = tmp; }
+			if (key == "room_name_class") { state.user_name = tmp; }
 			state.rerender();
 		}
 
@@ -168,9 +190,9 @@ class MainJoin extends React.Component {
             <div id="main-join-div" className="container">
             <button id="main-join-button" onClick={go_back}><i className="fas fa-arrow-left"></i></button>
 			<span id="main-join-span">Enter a room name to join. <br />
-			<span className={state.span_class}>Room names are alphanumeric, lowercase, max 20 characters, can't be blank.</span></span>
+			<span className={state.room_name_class}>Room names are alphanumeric, lowercase, max 20 characters, can't be blank.</span></span>
 			<input id="main-join-input" placeholder="Example: fun42" 
-			onChange={(e) => {room_name_onchange(e, "span_class");}} value={state.target_room}/>
+			onChange={(e) => {room_name_onchange(e, "room_name_class");}} value={state.target_room}/>
 			<span id="main-join-name-span">Enter a nick name. 
 			<span className={state.name_class}> Alphanumeric characters only, 20 character max, can't be blank.</span>
 			<br />Case insensitive. Max 20 people per room</span>
@@ -178,6 +200,8 @@ class MainJoin extends React.Component {
 			onChange={(e) => {room_name_onchange(e, "name_class");}}/>
 			<button className={button_class} id="main-join-button-2"
 			onClick={join_button_onclick} >Join</button>
+      <span className="error" id="main-join-error-span">
+			{state.last_error}</span>
             </div>
         );
     }

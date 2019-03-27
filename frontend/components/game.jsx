@@ -1,10 +1,20 @@
 import React from "react";
+import SpinningAnimation from "./game/spinning_animation";
+import Updates from "./game/updates";
+import Options from "./game/options";
 
 class Game extends React.Component {
     render () {
-        return (
-            <p>Game</p>
-        );
+            if (state.is_spinning == 1) {
+              return (<SpinningAnimation />);
+            } else {
+              return (
+                <div>
+                  <Updates />
+                  <Options />
+                </div>
+              );
+            }
     }
 }
 

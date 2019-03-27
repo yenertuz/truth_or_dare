@@ -50,12 +50,6 @@ class MainCreate extends React.Component {
 			state.name_class = "";
 		}
 
-		let room_name_taken = "";
-		if (state.room_name_taken == 1) {
-			room_name_taken = "";
-		} else {
-			room_name_taken = "";
-		}
 		let span_class = "";
 		let create_button_onclick = "";
 		if (state.room_name_class == "error" || 
@@ -75,14 +69,14 @@ class MainCreate extends React.Component {
 						nickname: state.user_name,
 					},
 					success: (data) => {
-						state.room = data;
+						if (data == "Room name taken. Please choose another room name.") {
+							state.last_error = state.data;
+						} else {
+							state.room = data;
+						}
 						state.target_room = "";
 						state.rerender();
 					}
-				}, (data, status) => {
-					console.log("RETURNED");
-					console.log(data);
-					console.log(status);
 				}
 				);
 			}

@@ -14,7 +14,7 @@ import { userInfo } from 'os';
 var state = {};
 state.target_room = check_room_target();
 state.room = "";
-state.url = "http://35.247.5.111";
+state.url = "https://server.yenertuz.com";
 window.state = state; // Delete this line after development
 
 class Root extends React.Component {

@@ -52,8 +52,7 @@ class MainCreate extends React.Component {
 
 		let room_name_taken = "";
 		if (state.room_name_taken == 1) {
-			room_name_taken = <span className="error" id="main-create-error-span">
-			Room name already exists. Please choose another room name</span>;
+			room_name_taken = "";
 		} else {
 			room_name_taken = "";
 		}
@@ -76,8 +75,6 @@ class MainCreate extends React.Component {
 						nickname: state.user_name,
 					},
 					success: (data) => {
-						console.log("HERE2");
-						console.log("data");
 						state.room = data;
 						state.target_room = "";
 						state.rerender();
@@ -120,7 +117,8 @@ class MainCreate extends React.Component {
 			<input type="text" placeholder="Example: coolperson12" id="main-create-name-input"
 			onChange={(e) => {room_name_onchange(e, "name_class");}}/>
 			<button id="main-create-button" className={span_class} onClick={create_button_onclick}>Create Room</button>
-            {room_name_taken}
+            <span className="error" id="main-create-error-span">
+			{state.last_error}</span>;
 			</div>
         );
     }

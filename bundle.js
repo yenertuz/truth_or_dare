@@ -262,7 +262,10 @@ function (_React$Component) {
       if (state.is_spinning == 1) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game_spinning_animation__WEBPACK_IMPORTED_MODULE_1__["default"], null);
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game_updates__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game_options__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container",
+          id: "game-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game_updates__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game_options__WEBPACK_IMPORTED_MODULE_3__["default"], null));
       }
     }
   }]);
@@ -331,17 +334,19 @@ function (_React$Component) {
         Object(_functions_click_truth_or_dare__WEBPACK_IMPORTED_MODULE_2__["default"])("dare");
       };
 
-      var spin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "truth-or-dare-button",
+      var spin = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "truth-or-dare-buttons-span"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "truth-or-dare-button main",
         onClick: _functions_click_spin__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }, "Spin");
+      }, "Spin"));
       var truth_or_dare = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "truth-or-dare-buttons-span"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "truth-or-dare-button",
+        className: "truth-or-dare-button main",
         onClick: click_truth
       }, "Truth"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "truth-or-dare-button",
+        className: "truth-or-dare-button main",
         onClick: click_dare
       }, "Dare"));
       var options = "";
@@ -352,7 +357,7 @@ function (_React$Component) {
         options = truth_or_dare;
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, options);
+      return options;
     }
   }]);
 
@@ -485,7 +490,7 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        id: "updates"
+        id: "updates-span"
       }, updates);
     }
   }]);

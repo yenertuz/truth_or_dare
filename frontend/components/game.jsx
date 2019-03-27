@@ -9,7 +9,7 @@ class Game extends React.Component {
               return (<SpinningAnimation />);
             } else {
               return (
-                <div>
+                <div className="container" id="game-container">
                   <Updates />
                   <Options />
                 </div>

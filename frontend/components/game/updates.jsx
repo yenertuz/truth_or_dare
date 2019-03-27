@@ -15,7 +15,7 @@ class Updates extends React.Component {
     }
 
     return (
-      <span id="updates">{updates}</span>
+      <span id="updates-span">{updates}</span>
     );
   }
 

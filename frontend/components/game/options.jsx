@@ -6,11 +6,13 @@ class Options extends React.Component {
   render () {
     let click_truth = () => { click_truth_or_dare("truth"); }
     let click_dare = () => { click_truth_or_dare("dare"); }
-    let spin = <button className="truth-or-dare-button" onClick={click_spin}>Spin</button>;
+    let spin = <span id="truth-or-dare-buttons-span">
+    <button className="truth-or-dare-button main" onClick={click_spin}>Spin</button>
+    </span>;
     let truth_or_dare = (
       <span id="truth-or-dare-buttons-span">
-      <button className="truth-or-dare-button" onClick={click_truth}>Truth</button>
-      <button className="truth-or-dare-button" onClick={click_dare}>Dare</button>
+      <button className="truth-or-dare-button main" onClick={click_truth}>Truth</button>
+      <button className="truth-or-dare-button main" onClick={click_dare}>Dare</button>
       </span>
     )
 
@@ -22,7 +24,7 @@ class Options extends React.Component {
     }
 
     return (
-      <p>{options}</p>
+      options
     );
   }
 

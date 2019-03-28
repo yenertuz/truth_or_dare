@@ -163,7 +163,8 @@ class MainJoin extends React.Component {
             } else if (data.error == "user_name_taken") {
               state.last_error = "Nickname taken. Please choose another nickname";
             } else if (data.error != "incorrect_post") {
-              state.room_id = data; state.target_room = ""; state.is_game = 1;
+              state.room_name = state.target_room ; 
+              state.room_id = data; delete state.target_room; state.is_game = 1;
             }
             state.rerender();
           },

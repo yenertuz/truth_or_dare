@@ -783,8 +783,9 @@ function (_React$Component3) {
               } else if (data.error == "user_name_taken") {
                 state.last_error = "Nickname taken. Please choose another nickname";
               } else if (data.error != "incorrect_post") {
+                state.room_name = state.target_room;
                 state.room_id = data;
-                state.target_room = "";
+                delete state.target_room;
                 state.is_game = 1;
               }
 
@@ -1097,7 +1098,7 @@ function start_sse() {
   source.onmessage = function (event) {
     var response_object = JSON.parse(event.data);
 
-    if (state.room_status != "waiting_for_choice" && state.room_status != response_object.status) {
+    if (state.room_status == "waiting_for_spin" && state.room_status != response_object.status) {
       state.is_spinning = 1;
     }
 

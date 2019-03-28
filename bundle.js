@@ -494,7 +494,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "updates-span"
-      }, updates);
+      }, "Room Name: ", state.room_name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), updates);
     }
   }]);
 

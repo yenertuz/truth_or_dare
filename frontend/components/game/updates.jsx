@@ -18,7 +18,7 @@ class Updates extends React.Component {
     }
 
     return (
-      <span id="updates-span">{updates}</span>
+      <span id="updates-span">Room Name: {state.room_name} <br />{updates}</span>
     );
   }
 

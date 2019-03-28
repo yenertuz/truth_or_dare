@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RoomConnector from './frontend/components/room_connector';
 import Main from './frontend/components/main';
 import Game from "./frontend/components/game";
 import check_room_target from './frontend/functions/check_room_target';

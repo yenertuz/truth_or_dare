@@ -99,17 +99,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _frontend_components_room_connector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/components/room_connector */ "./frontend/components/room_connector.jsx");
-/* harmony import */ var _frontend_components_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/components/main */ "./frontend/components/main.jsx");
-/* harmony import */ var _frontend_components_game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/components/game */ "./frontend/components/game.jsx");
-/* harmony import */ var _frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/functions/check_room_target */ "./frontend/functions/check_room_target.jsx");
-/* harmony import */ var _frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frontend/functions/create_user */ "./frontend/functions/create_user.jsx");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var assert__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js");
-/* harmony import */ var assert__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(assert__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _frontend_components_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/components/main */ "./frontend/components/main.jsx");
+/* harmony import */ var _frontend_components_game__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/components/game */ "./frontend/components/game.jsx");
+/* harmony import */ var _frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/functions/check_room_target */ "./frontend/functions/check_room_target.jsx");
+/* harmony import */ var _frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./frontend/functions/create_user */ "./frontend/functions/create_user.jsx");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var assert__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js");
+/* harmony import */ var assert__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(assert__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -127,7 +126,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -159,7 +157,7 @@ function (_React$Component) {
     _classCallCheck(this, Root);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Root).call(this, props));
-    Object(_frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_6__["default"])();
+    Object(_frontend_functions_create_user__WEBPACK_IMPORTED_MODULE_5__["default"])();
 
     state.rerender = function () {
       _this.setState({});
@@ -172,9 +170,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (state.is_game == 1) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_2__["default"], null);
       }
     }
   }]);
@@ -186,8 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Root, null), root);
 });
-jquery__WEBPACK_IMPORTED_MODULE_7___default()(window).on("unload", function () {
-  jquery__WEBPACK_IMPORTED_MODULE_7___default.a.post({
+jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).on("unload", function () {
+  jquery__WEBPACK_IMPORTED_MODULE_6___default.a.post({
     url: state.url + "/users/delete.php",
     data: {
       id: state.user
@@ -888,69 +886,6 @@ function (_React$Component4) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Main);
-
-/***/ }),
-
-/***/ "./frontend/components/room_connector.jsx":
-/*!************************************************!*\
-  !*** ./frontend/components/room_connector.jsx ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
- // Check if room exists
-// Ask for the passcode
-// Either join successfully
-// Or retry
-// Or give the option to go to the main menu
-
-var RoomConnector =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(RoomConnector, _React$Component);
-
-  function RoomConnector() {
-    _classCallCheck(this, RoomConnector);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(RoomConnector).apply(this, arguments));
-  }
-
-  _createClass(RoomConnector, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Room Connector");
-    }
-  }]);
-
-  return RoomConnector;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (RoomConnector);
 
 /***/ }),
 

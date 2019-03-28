@@ -145,7 +145,7 @@ var state = {}; // state.target_room = check_room_target();
 state.room_id = "";
 state.room_name = "";
 state.is_game = 0;
-state.url = "http://localhost:9090";
+state.url = "https://server.yenertuz.com";
 window.state = state; // Delete this line after development
 
 var Root =

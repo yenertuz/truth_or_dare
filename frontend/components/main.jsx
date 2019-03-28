@@ -184,7 +184,7 @@ class MainJoin extends React.Component {
 			e.target.value = tmp;
 			state[key] = is_room_name_okay(tmp);
 			if (key == "room_name_class") { state.target_room = tmp; }
-			if (key == "room_name_class") { state.user_name = tmp; }
+			else { state.user_name = tmp; }
 			state.rerender();
 		}
 

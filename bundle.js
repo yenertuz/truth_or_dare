@@ -809,9 +809,7 @@ function (_React$Component3) {
 
         if (key == "room_name_class") {
           state.target_room = tmp;
-        }
-
-        if (key == "room_name_class") {
+        } else {
           state.user_name = tmp;
         }
 

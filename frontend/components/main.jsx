@@ -72,7 +72,7 @@ class MainCreate extends React.Component {
 						if (data.error == "Room name taken") {
 							state.last_error = "Room name taken. Please choose another room name."
 						} else {
-							state.room = data; delete state.room_name_class; delete state.name_class; delete state.target_room;
+              state.room_id = data; delete state.room_name_class; delete state.name_class; delete state.target_room;
 						}
 						console.log(data);
 						state.target_room = "";
@@ -154,7 +154,6 @@ class MainJoin extends React.Component {
             user_name: state.user_name
 					},
 					success: (data) => {
-            console.log(data);
 						if (data.error == "room_full") {
               state.last_error = "The requested room is full";    
             } else if (data.error == "no_room") {
@@ -162,7 +161,7 @@ class MainJoin extends React.Component {
             } else if (data.error == "user_name_taken") {
               state.last_error = "Nickname taken. Please choose another nickname";
             } else if (data.error != "incorrect_post") {
-              state.room = data; state.target_room = "";
+              state.room_id = data; state.target_room = "";
             }
             state.rerender();
           },

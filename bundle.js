@@ -139,19 +139,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var state = {};
 state.target_room = Object(_frontend_functions_check_room_target__WEBPACK_IMPORTED_MODULE_5__["default"])();
-state.room = "";
+state.room_id = "";
+state.room_name = "";
 state.url = "http://localhost:9090";
 window.state = state; // Delete this line after development
-
-window.test = function () {
-  state.room = "test";
-  state.room_description = "Yener is asking Aniqa.";
-  state.asker_user_name = "Yener";
-  state.replier_user_name = "Aniqa";
-  state.user_name = "Yener";
-  state.room_status = "waiting_for_spin";
-  state.rerender();
-};
 
 var Root =
 /*#__PURE__*/
@@ -179,7 +170,7 @@ function (_React$Component) {
       if (state.target_room != "") {
         state.action = "join";
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_3__["default"], null);
-      } else if (state.room != "") {
+      } else if (state.room_name != "") {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_game__WEBPACK_IMPORTED_MODULE_4__["default"], null);
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_main__WEBPACK_IMPORTED_MODULE_3__["default"], null);
@@ -204,7 +195,6 @@ jquery__WEBPACK_IMPORTED_MODULE_7___default()(window).on("unload", function () {
     async: false
   });
 });
-window.test(); // =============================>>>>>  DELETE ME AFTER TESTING
 
 /***/ }),
 
@@ -222,6 +212,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game_spinning_animation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game/spinning_animation */ "./frontend/components/game/spinning_animation.jsx");
 /* harmony import */ var _game_updates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game/updates */ "./frontend/components/game/updates.jsx");
 /* harmony import */ var _game_options__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game/options */ "./frontend/components/game/options.jsx");
+/* harmony import */ var _functions_start_sse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../functions/start_sse */ "./frontend/functions/start_sse.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -245,15 +236,20 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Game =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Game, _React$Component);
 
-  function Game() {
+  function Game(props) {
+    var _this;
+
     _classCallCheck(this, Game);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Game).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Game).call(this, props));
+    Object(_functions_start_sse__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    return _this;
   }
 
   _createClass(Game, [{
@@ -644,7 +640,7 @@ function (_React$Component2) {
               if (data.error == "Room name taken") {
                 state.last_error = "Room name taken. Please choose another room name.";
               } else {
-                state.room = data;
+                state.room_id = data;
                 delete state.room_name_class;
                 delete state.name_class;
                 delete state.target_room;
@@ -771,8 +767,6 @@ function (_React$Component3) {
               user_name: state.user_name
             },
             success: function success(data) {
-              console.log(data);
-
               if (data.error == "room_full") {
                 state.last_error = "The requested room is full";
               } else if (data.error == "no_room") {
@@ -780,7 +774,7 @@ function (_React$Component3) {
               } else if (data.error == "user_name_taken") {
                 state.last_error = "Nickname taken. Please choose another nickname";
               } else if (data.error != "incorrect_post") {
-                state.room = data;
+                state.room_id = data;
                 state.target_room = "";
               }
 
@@ -993,13 +987,21 @@ function check_room_target() {
 __webpack_require__.r(__webpack_exports__);
 function click_spin() {
   state.is_spinning = 1;
-  setTimeout(function () {
-    state.is_spinning = 0;
-    state.rerender();
-  }, 1000);
-  state.asker_user_name = "Aniqa";
-  state.replier_user_name = "Yener";
-  state.room_status = "waiting_for_choice";
+  state.rerender();
+  $.post({
+    url: state.url + "/game/spin.php",
+    dataType: "json",
+    data: {
+      room_id: state.room_id,
+      room_name: state.room_name
+    },
+    success: function success() {
+      setTimeout(function () {
+        state.is_spinning = 0;
+        state.rerender();
+      }, 1000);
+    }
+  });
   state.rerender();
 }
 
@@ -1017,16 +1019,23 @@ function click_spin() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function click_truth_or_dare(choice) {
-  if (choice == "truth") {
-    state.room_description = "Yener picked TRUTH";
-  } else {
-    state.room_description = "Yener picked DARE";
-  }
+  var url = state.url + "/game/answer.php";
+  var data = {
+    room_name: state.room_name,
+    replier_user_name: state.user_name,
+    choice: choice
+  };
 
-  state.room_status = "waiting_for_spin";
-  state.asker_user_name = "Yener";
-  state.replier_user_name = "Aniqa";
-  state.rerender();
+  var success = function success() {
+    state.rerender();
+  };
+
+  $.post({
+    url: url,
+    dataType: "json",
+    data: data,
+    success: success
+  });
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (click_truth_or_dare);
@@ -1051,6 +1060,42 @@ function create_user() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (create_user);
+
+/***/ }),
+
+/***/ "./frontend/functions/start_sse.jsx":
+/*!******************************************!*\
+  !*** ./frontend/functions/start_sse.jsx ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function start_sse() {
+  var source_url = state.url + "/game/sse.php?room_id=" + state.room_id;
+  var source = new EventSource(source_url);
+
+  source.onmessage = function (event) {
+    var response_object = JSON.parse(event.data);
+
+    if (state.room_status != "waiting_for_choice") {
+      state.is_spinning = 1;
+    }
+
+    state.room_description = response_object.description;
+    state.room_status = response_object.status;
+    state.asker_user_name = response_object.asker_user_name;
+    state.replier_user_name = response_object.replier_user_name;
+    setTimeout(function () {
+      state.is_spinning = 0;
+      state.rerender();
+    }, 1000);
+    state.rerender();
+  };
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (start_sse);
 
 /***/ }),
 

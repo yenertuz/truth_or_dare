@@ -3,6 +3,7 @@ import click_spin from "../../functions/click_spin";
 import click_truth_or_dare from "../../functions/click_truth_or_dare";
 
 class Options extends React.Component {
+  
   render () {
     let click_truth = () => { click_truth_or_dare("truth"); }
     let click_dare = () => { click_truth_or_dare("dare"); }

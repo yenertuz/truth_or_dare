@@ -1,13 +1,19 @@
 function click_truth_or_dare(choice) {
-  if (choice == "truth") {
-    state.room_description = "Yener picked TRUTH";
-  } else {
-    state.room_description = "Yener picked DARE";
+  let url = state.url + "/game/answer.php";
+  let data = {
+    room_name: state.room_name, 
+    replier_user_name: state.user_name, 
+    choice: choice
+  };
+  let success = () => {
+    state.rerender();
   }
-  state.room_status = "waiting_for_spin";
-  state.asker_user_name = "Yener";
-  state.replier_user_name = "Aniqa";
-  state.rerender();
+  $.post({
+    url: url,
+    dataType: "json",
+    data: data,
+    success: success
+  });
 }
 
 export default click_truth_or_dare;

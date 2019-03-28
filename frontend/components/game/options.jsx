@@ -20,6 +20,8 @@ class Options extends React.Component {
     let options = "";
     if (state.room_status == "waiting_for_spin" && state.user_name == state.asker_user_name ) {
       options = spin;
+    } else if (state.room_status == "waiting_to_start" && state.user_name == state.asker_user_name) {
+      options = spin;
     } else if (state.room_status == "waiting_for_choice" && state.user_name == state.replier_user_name) {
       options = truth_or_dare;
     }

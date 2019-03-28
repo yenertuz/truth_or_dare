@@ -64,18 +64,20 @@ class MainCreate extends React.Component {
 					url: state.url + "/rooms/create.php",
 					dataType: "json",
 					data: {
-            id: state.user, 
-            room_name: state.room_name,
-            user_name: state.user_name
+            creator_id: state.user, 
+            name: state.room_name,
+            nickname: state.user_name
 					},
 					success: (data) => {
-						if (data.error == "Room name taken") {
+						if (data.error == "room_full") {
 							state.last_error = "Room name taken. Please choose another room name."
-						} else {
+						} else if (data.error != "bad_post") {
+              state.is_game = 1;
+              state.room_status = "waiting_to_start";
               state.room_id = data; delete state.room_name_class; delete state.name_class; delete state.target_room;
 						}
 						console.log(data);
-						state.target_room = "";
+            state.target_room = "";
 						state.rerender();
 					}
 				});
@@ -161,7 +163,7 @@ class MainJoin extends React.Component {
             } else if (data.error == "user_name_taken") {
               state.last_error = "Nickname taken. Please choose another nickname";
             } else if (data.error != "incorrect_post") {
-              state.room_id = data; state.target_room = "";
+              state.room_id = data; state.target_room = ""; state.is_game = 1;
             }
             state.rerender();
           },

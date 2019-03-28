@@ -7,14 +7,16 @@ import check_room_target from './frontend/functions/check_room_target';
 import create_user from "./frontend/functions/create_user";
 import $ from "jquery";
 import { userInfo } from 'os';
+import { strictEqual } from 'assert';
 
 // import $ from 'jquery';
 // import environment from "./environment";
 
 var state = {};
-state.target_room = check_room_target();
+// state.target_room = check_room_target();
 state.room_id = "";
 state.room_name = "";
+state.is_game = 0;
 state.url = "http://localhost:9090";
 window.state = state; // Delete this line after development
 
@@ -29,16 +31,11 @@ class Root extends React.Component {
 	}
 	
 	render() {
-		if (state.target_room != "") {
-			state.action = "join";
-			return (<Main />);
-		} 
-		else if (state.room_name != "") {
-			return (<Game />);
-		}
-		else {
-			return (<Main />);
-		}
+		if (state.is_game == 1) {
+      return (<Game />);
+    } else {
+      return (<Main />);
+    }
 	}
 }
 

@@ -4,7 +4,8 @@ function start_sse () {
   let source = new EventSource(source_url);
   source.onmessage = (event) => {
     let response_object = JSON.parse(event.data);
-    if (state.room_status != "waiting_for_choice") {
+    if (state.room_status != "waiting_for_choice" &&
+          state.room_status != response_object.status) {
       state.is_spinning = 1;
     }
     state.room_description = response_object.description;

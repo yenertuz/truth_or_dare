@@ -9,6 +9,7 @@ class Options extends React.Component {
     let click_dare = () => { click_truth_or_dare("dare"); }
     let spin = <span id="truth-or-dare-buttons-span">
     <button className="truth-or-dare-button main" onClick={click_spin}>Spin</button>
+    <span id="game-options-error">{ state.last_error }</span>
     </span>;
     let truth_or_dare = (
       <span id="truth-or-dare-buttons-span">

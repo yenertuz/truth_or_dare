@@ -336,7 +336,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "truth-or-dare-button main",
         onClick: _functions_click_spin__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }, "Spin"));
+      }, "Spin"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "game-options-error"
+      }, state.last_error));
       var truth_or_dare = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         id: "truth-or-dare-buttons-span"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -989,9 +991,39 @@ function check_room_target() {
   !*** ./frontend/functions/click_spin.jsx ***!
   \*******************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/yenertuz/Desktop/truth_or_dare/frontend/functions/click_spin.jsx: Unexpected token (14:6)\n\n\u001b[0m \u001b[90m 12 | \u001b[39m    success\u001b[33m:\u001b[39m (data) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 13 | \u001b[39m      \u001b[36mif\u001b[39m (data\u001b[33m.\u001b[39merror \u001b[33m==\u001b[39m undefined)\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 | \u001b[39m      )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m    }\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m  })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 17 | \u001b[39m\u001b[0m\n    at Object.raise (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:3849:17)\n    at Object.unexpected (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5163:16)\n    at Object.parseExprAtom (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6328:20)\n    at Object.parseExprAtom (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:3568:20)\n    at Object.parseExprSubscripts (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5914:23)\n    at Object.parseMaybeUnary (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5894:21)\n    at Object.parseExprOps (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5781:23)\n    at Object.parseMaybeConditional (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5754:23)\n    at Object.parseMaybeAssign (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5701:21)\n    at Object.parseExpression (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5649:23)\n    at Object.parseStatementContent (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7420:23)\n    at Object.parseStatement (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7291:17)\n    at Object.parseIfStatement (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7654:28)\n    at Object.parseStatementContent (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7336:21)\n    at Object.parseStatement (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7291:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7877:25)\n    at Object.parseBlockBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7864:10)\n    at Object.parseBlock (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:7848:10)\n    at Object.parseFunctionBody (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6909:24)\n    at Object.parseArrowExpression (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6851:10)\n    at Object.parseParenAndDistinguishExpression (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6489:12)\n    at Object.parseExprAtom (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6260:21)\n    at Object.parseExprAtom (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:3568:20)\n    at Object.parseExprSubscripts (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5914:23)\n    at Object.parseMaybeUnary (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5894:21)\n    at Object.parseExprOps (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5781:23)\n    at Object.parseMaybeConditional (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5754:23)\n    at Object.parseMaybeAssign (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:5701:21)\n    at Object.parseObjectProperty (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6768:101)\n    at Object.parseObjPropValue (/Users/yenertuz/Desktop/truth_or_dare/node_modules/@babel/parser/lib/index.js:6793:101)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function click_spin() {
+  state.rerender();
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.post({
+    url: state.url + "/game/spin.php",
+    dataType: "json",
+    data: {
+      room_id: state.room_id,
+      room_name: state.room_name
+    },
+    success: function success(data) {
+      if (data.error != undefined) {
+        if (data.error == "too_few_people") {
+          state.last_error = "Fewer than 2 people in the room. Please wait until more poeple join!";
+        }
+      } else {
+        delete state.last_error;
+      }
+
+      state.rerender();
+    }
+  });
+  state.rerender();
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (click_spin);
 
 /***/ }),
 

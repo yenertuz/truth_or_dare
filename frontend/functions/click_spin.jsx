@@ -10,8 +10,15 @@ function click_spin() {
       room_name: state.room_name
     },
     success: (data) => {
-      if (data.error == undefined)
-      );
+      if (data.error != undefined) {
+        if (data.error == "too_few_people") {
+          state.last_error = "Fewer than 2 people in the room. Please wait until more poeple join!";
+        }
+      }
+      else {
+        delete state.last_error;
+      }
+      state.rerender();
     }
   });
 

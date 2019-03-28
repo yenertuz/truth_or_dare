@@ -75,3 +75,4 @@ margin-top: 2% }
   #updates-span { font-size: 20px; display: block; text-align: center; padding-top: 100px; }
   #game-container { display: flex; flex-direction: column; justify-content: flex-start; }
   #truth-or-dare-buttons-span  { padding-top: 100px;   }
+  #game-options-error { text-align: center; color: crimson; margin-top: 20px; }

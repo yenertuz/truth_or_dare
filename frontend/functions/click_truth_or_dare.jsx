@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 function click_truth_or_dare(choice) {
   let url = state.url + "/game/answer.php";
   let data = {

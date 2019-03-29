@@ -75,7 +75,8 @@ class MainCreate extends React.Component {
               state.is_game = 1;
               state.room_status = "waiting_to_start";
               state.room_id = data; delete state.room_name_class; delete state.name_class; delete state.target_room;
-						}
+              delete state.last_error;
+            }
 						console.log(data);
             state.target_room = "";
 						state.rerender();
@@ -88,7 +89,8 @@ class MainCreate extends React.Component {
 			state.action = "";
 			delete state.span_class; delete state.room_name; delete state.user_name;
 			delete state.name_class;
-			delete state.room_name_class;
+      delete state.room_name_class;
+      delete state.last_error;
             state.rerender();
 		}
 		
@@ -126,7 +128,7 @@ class MainJoin extends React.Component {
 			state.action = "";
 			state.target_room = "";
 			delete state.room_name_class; delete state.room_name; delete state.user_name;
-			delete state.name_class;
+			delete state.name_class; delete state.last_error;
 			state.rerender();
 		}
 
@@ -165,6 +167,7 @@ class MainJoin extends React.Component {
             } else if (data.error != "incorrect_post") {
               state.room_name = state.target_room ; 
               state.room_id = data; delete state.target_room; state.is_game = 1;
+              delete state.last_error;
             }
             state.rerender();
           },

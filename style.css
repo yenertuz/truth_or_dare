@@ -59,6 +59,7 @@ margin-top: 2% }
 #main-join-button-2:hover, #main-join-button-2:active { color: orange; background-color: black; }
 #main-join-button-2.error { color:black; background-color: gray; cursor: default;   }
 #main-join-div span.error { color: crimson; font-weight: bold; }
+#main-join-error-span { margin-top: 10px; }
 
 /* Game */
 

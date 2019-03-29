@@ -9,7 +9,10 @@ function click_truth_or_dare(choice) {
   };
   let success = () => {
     state.rerender();
-  }
+  };
+  state.room_status = "waiting_for_spin";
+  state.room_desciption = choice;
+  state.rerender();
   $.post({
     url: url,
     dataType: "json",

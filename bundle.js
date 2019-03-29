@@ -135,16 +135,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
- // import $ from 'jquery';
-// import environment from "./environment";
 
-var state = {}; // state.target_room = check_room_target();
-
+var state = {};
 state.room_id = "";
 state.room_name = "";
 state.is_game = 0;
-state.url = "http://localhost:9090";
-window.state = state; // Delete this line after development
+state.url = "https://server.yenertuz.com/";
 
 var Root =
 /*#__PURE__*/
@@ -651,6 +647,7 @@ function (_React$Component2) {
                 delete state.room_name_class;
                 delete state.name_class;
                 delete state.target_room;
+                delete state.last_error;
               }
 
               console.log(data);
@@ -668,6 +665,7 @@ function (_React$Component2) {
         delete state.user_name;
         delete state.name_class;
         delete state.room_name_class;
+        delete state.last_error;
         state.rerender();
       };
 
@@ -744,6 +742,7 @@ function (_React$Component3) {
         delete state.room_name;
         delete state.user_name;
         delete state.name_class;
+        delete state.last_error;
         state.rerender();
       };
 
@@ -785,6 +784,7 @@ function (_React$Component3) {
                 state.room_id = data;
                 delete state.target_room;
                 state.is_game = 1;
+                delete state.last_error;
               }
 
               state.rerender();
@@ -934,7 +934,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function click_spin() {
-  state.rerender();
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.post({
     url: state.url + "/game/spin.php",
     dataType: "json",
@@ -946,15 +945,15 @@ function click_spin() {
       if (data.error != undefined) {
         if (data.error == "too_few_people") {
           state.last_error = "Fewer than 2 people in the room. Please wait until more poeple join!";
+          state.rerender();
         }
       } else {
         delete state.last_error;
+        state.is_spinning = 1;
+        state.rerender();
       }
-
-      state.rerender();
     }
   });
-  state.rerender();
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (click_spin);
@@ -986,6 +985,9 @@ function click_truth_or_dare(choice) {
     state.rerender();
   };
 
+  state.room_status = "waiting_for_spin";
+  state.room_desciption = choice;
+  state.rerender();
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.post({
     url: url,
     dataType: "json",
@@ -1035,18 +1037,24 @@ function start_sse() {
   source.onmessage = function (event) {
     var response_object = JSON.parse(event.data);
 
-    if (state.room_status == "waiting_for_spin" && state.room_status != response_object.status) {
+    if (response_object.status == "waiting_for_choice" && state.room_status != "waiting_for_choice") {
       state.is_spinning = 1;
+      state.rerender();
+      setTimeout(function () {
+        state.is_spinning = 0;
+        state.rerender();
+      }, 1000);
     }
 
     state.room_description = response_object.description;
     state.room_status = response_object.status;
     state.asker_user_name = response_object.asker_user_name;
     state.replier_user_name = response_object.replier_user_name;
-    setTimeout(function () {
-      state.is_spinning = 0;
-      state.rerender();
-    }, 1000);
+
+    if (state.room_status == "waiting_for_choice") {
+      delete state.last_error;
+    }
+
     state.rerender();
   };
 }

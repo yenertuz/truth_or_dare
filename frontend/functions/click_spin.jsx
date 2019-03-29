@@ -1,7 +1,6 @@
 import $ from "jquery";
 
 function click_spin() {
-  state.rerender();
   $.post({
     url: state.url + "/game/spin.php",
     dataType: "json",
@@ -13,16 +12,16 @@ function click_spin() {
       if (data.error != undefined) {
         if (data.error == "too_few_people") {
           state.last_error = "Fewer than 2 people in the room. Please wait until more poeple join!";
+          state.rerender();
         }
       }
       else {
         delete state.last_error;
+        state.is_spinning = 1;
+        state.rerender();
       }
-      state.rerender();
     }
   });
-
-  state.rerender();
 }
 
 

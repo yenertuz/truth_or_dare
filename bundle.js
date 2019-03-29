@@ -141,6 +141,7 @@ state.room_id = "";
 state.room_name = "";
 state.is_game = 0;
 state.url = "https://server.yenertuz.com/";
+window.state = state;
 
 var Root =
 /*#__PURE__*/

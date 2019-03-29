@@ -13,6 +13,7 @@ state.room_id = "";
 state.room_name = "";
 state.is_game = 0;
 state.url = "https://server.yenertuz.com/";
+window.state = state;
 
 class Root extends React.Component {
 	constructor(props) {
